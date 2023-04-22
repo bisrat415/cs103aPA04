@@ -1,11 +1,12 @@
-<div class="jumbotron">
+
+  <div class="jumbotron">
     <h1> Transactions List for <%= user.googlename %> </h1>
     <p> Here is your list of transactions! </p>
 
-      <% items.forEach(item => { %>
-           <a href="/transaction/remove/<%=item._id %>">X</a>
+      <% things.forEach(thing => { %>
+           <a href="/transaction/remove/<%=thing._id %>">X</a>
            ::
-           <%= item.item %>
+           <%= thing.description %>
           <br>
       <% }) %>
 

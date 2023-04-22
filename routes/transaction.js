@@ -24,7 +24,7 @@ isLoggedIn = (req,res,next) => {
 router.get('/transaction/',
   isLoggedIn,
   async (req, res, next) => {
-      res.locals.items = await transactionItem.find({userId:req.user._id})
+      res.locals.things = await transactionItem.find({userId:req.user._id})
       res.render('transacList');
 });
 
@@ -48,7 +48,7 @@ router.get('/transaction/remove/:itemId',
   isLoggedIn,
   async (req, res, next) => {
       console.log("inside /transaction/remove/:itemId")
-      await transactionItem.deleteOne({_id:req.params.itemId});
+      await transactionItem.deleteOne({_id:req.params.objectId});
       res.redirect('/Transactions')
 });
 
