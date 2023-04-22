@@ -1,0 +1,17 @@
+<div class="jumbotron">
+    <h1> Transactions List for <%= user.googlename %> </h1>
+    <p> Here is your list of transactions! </p>
+
+      <% items.forEach(item => { %>
+           <a href="/transaction/remove/<%=item._id %>">X</a>
+           ::
+           <%= item.item %>
+          <br>
+      <% }) %>
+
+      <form method="post" action="transaction">
+          new item: <input type="text" name="item"><br>
+          <input type="submit" value="store">
+      </form>
+
+  </div>
