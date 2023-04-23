@@ -25,16 +25,16 @@
       <thead>
         <tr>
           <th>
-            <a href="?sortBy=date">Date</a>
+            <a href="?sortBy=description">Description</a>
+          </th>
+          <th>
+            <a href="?sortBy=amount">Amount</a>
           </th>
           <th>
             <a href="?sortBy=category">Category</a>
           </th>
           <th>
-            <a href="?sortBy=description">Description</a>
-          </th>
-          <th>
-            <a href="?sortBy=amount">Amount</a>
+            <a href="?sortBy=date">Date</a>
           </th>
           <th>Actions</th>
         </tr>
@@ -45,9 +45,10 @@
             <td><%= transaction.description %></td>
             <td><%= transaction.amount %></td>
             <td><%= transaction.category %></td>
-            <td><%= transaction.date.toLocaleDateString() %></td>
+            <td><%= transaction.date.toDateString() %></td>
             <td>
               <a href="/transaction/edit/<%= transaction._id %>">Edit</a>
+
               <a href="/transaction/remove/<%= transaction._id %>">Delete</a>
             </td>
           </tr>

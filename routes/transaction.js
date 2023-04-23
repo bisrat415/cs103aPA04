@@ -37,7 +37,7 @@ router.post('/transaction',
         {description:req.body.description,
          amount:req.body.amount,
          category:req.body.category,
-         date: new Date(),
+         date:req.body.date,
          userId: req.user._id
         })
       await transac.save();
@@ -56,7 +56,7 @@ router.get('/transaction/edit/:objectId',
   isLoggedIn,
   async (req, res, next) => {
       console.log("inside /transaction/edit/:objectId")
-      await transactionItem.deleteOne({_id:req.params.objectId});
+      await transactionItem.findByIdAndUpdate({_id:req.params.objectId});
       res.redirect('/transaction')
 });
 
