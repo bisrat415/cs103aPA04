@@ -1,4 +1,4 @@
-
+<!-- 
   <div class="jumbotron">
     <h1> Transactions List for <%= user.googlename %> </h1>
     <p> Here is your list of transactions! </p>
@@ -15,4 +15,54 @@
           <input type="submit" value="store">
       </form>
 
+  </div> -->
+
+  <div class="jumbotron">
+    <h1>Transactions List</h1>
+    <p>Here is your list of transactions!</p>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <a href="?sortBy=date">Date</a>
+          </th>
+          <th>
+            <a href="?sortBy=category">Category</a>
+          </th>
+          <th>
+            <a href="?sortBy=description">Description</a>
+          </th>
+          <th>
+            <a href="?sortBy=amount">Amount</a>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% things.forEach(transaction => { %>
+          <tr>
+            <td><%= transaction.date.toLocaleDateString() %></td>
+            <td><%= transaction.category %></td>
+            <td><%= transaction.description %></td>
+            <td><%= transaction.amount %></td>
+            <td>
+              <a href="/transaction/edit/<%= transaction._id %>">Edit</a>
+              <a href="/transaction/delete/<%= transaction._id %>">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  
+    <form>
+      <input type="text" id="description" name="description" placeholder="description"><br>
+      <input type="text" id="category" name="category" placeholder="category"><br>
+      <input type="number" id="amount" name="amount" placeholder="amount"><br>
+      <input type="date" id="date" name="date" placeholder="date"><br>
+      <input type="submit" value="Store">
+    </form>
+    <!-- <a href="/transaction/new">Add Transaction</a> -->
+  
+    <a href="/transaction/groupbycategory">Group by Category</a>
   </div>
