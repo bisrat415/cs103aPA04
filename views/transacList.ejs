@@ -42,20 +42,20 @@
       <tbody>
         <% things.forEach(transaction => { %>
           <tr>
-            <td><%= transaction.date.toLocaleDateString() %></td>
-            <td><%= transaction.category %></td>
             <td><%= transaction.description %></td>
             <td><%= transaction.amount %></td>
+            <td><%= transaction.category %></td>
+            <td><%= transaction.date.toLocaleDateString() %></td>
             <td>
               <a href="/transaction/edit/<%= transaction._id %>">Edit</a>
-              <a href="/transaction/delete/<%= transaction._id %>">Delete</a>
+              <a href="/transaction/remove/<%= transaction._id %>">Delete</a>
             </td>
           </tr>
         <% }) %>
       </tbody>
     </table>
   
-    <form>
+    <form method="post" action="transaction">
       <input type="text" id="description" name="description" placeholder="description"><br>
       <input type="text" id="category" name="category" placeholder="category"><br>
       <input type="number" id="amount" name="amount" placeholder="amount"><br>
