@@ -44,12 +44,20 @@ router.post('/transaction',
       res.redirect('/transaction')
 });
 
-router.get('/transaction/remove/:itemId',
+router.get('/transaction/remove/:objectId',
   isLoggedIn,
   async (req, res, next) => {
-      console.log("inside /transaction/remove/:itemId")
+      console.log("inside /transaction/remove/:objectId")
       await transactionItem.deleteOne({_id:req.params.objectId});
-      res.redirect('/Transactions')
+      res.redirect('/transaction')
+});
+
+router.get('/transaction/edit/:objectId',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("inside /transaction/edit/:objectId")
+      await transactionItem.deleteOne({_id:req.params.objectId});
+      res.redirect('/transaction')
 });
 
 module.exports = router;
