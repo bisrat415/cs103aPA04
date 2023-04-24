@@ -58,7 +58,9 @@ router.get('/transaction/edit/:objectId',
     let objectId = req.params.objectId;
     console.log(objectId);
     res.locals.transaction = await transactionItem.find({_id: objectId});
-    res.render('edit');
+    res.render('edit')
+
+
     // transactionItem.findById(objectId)
     //   .then((transaction) => {
     //     res.render("edit", {
@@ -71,8 +73,7 @@ router.get('/transaction/edit/:objectId',
     //   });
 });
 
-router.put(
-  "/transaction/update/:objectId",
+router.put('/transaction/update/:objectId',
   isLoggedIn,
   async (req, res, next) => {
     let objectId = req.params.id;
@@ -81,14 +82,13 @@ router.put(
       amount: req.body.amount,
       category: req.body.category,
       date: req.body.date,
+      userId: req.user._id
     };
     transactionItem.findByIdAndUpdate(objectId, {
       $set: updatedTransaction,
     })
-      .then((transaction) => {
-        res.redirect("/transaction");
-      });
-    }
+    res.redirect("/transaction");
+  }
 );
 
 module.exports = router;
