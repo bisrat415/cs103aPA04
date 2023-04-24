@@ -55,9 +55,40 @@ router.get('/transaction/remove/:objectId',
 router.get('/transaction/edit/:objectId',
   isLoggedIn,
   async (req, res, next) => {
-      console.log("inside /transaction/edit/:objectId")
-      await transactionItem.findByIdAndUpdate({_id:req.params.objectId});
-      res.redirect('/transaction')
+    let objectId = req.params.objectId;
+    console.log(objectId);
+    res.locals.transaction = await transactionItem.find({_id: objectId});
+    res.render('edit');
+    // transactionItem.findById(objectId)
+    //   .then((transaction) => {
+    //     res.render("edit", {
+    //       transaction: transaction,
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(`Error fetching transaction by ID: ${error.message}`);
+    //     next(error);
+    //   });
 });
+
+router.put(
+  "/transaction/update/:objectId",
+  isLoggedIn,
+  async (req, res, next) => {
+    let objectId = req.params.id;
+    updatedTransaction = {
+      description: req.body.description,
+      amount: req.body.amount,
+      category: req.body.category,
+      date: req.body.date,
+    };
+    transactionItem.findByIdAndUpdate(objectId, {
+      $set: updatedTransaction,
+    })
+      .then((transaction) => {
+        res.redirect("/transaction");
+      });
+    }
+);
 
 module.exports = router;

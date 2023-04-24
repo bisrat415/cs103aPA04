@@ -1,0 +1,7 @@
+<form method="POST" action="<%=`/transaction/:objectId/update?_method=PUT`%>">
+    <input type="text" id="description" name="description" placeholder="description" value="<%= transaction.description %>"><br>
+    <input type="text" id="category" name="category" placeholder="category" value="<%= transaction.category %>"><br>
+    <input type="number" id="amount" name="amount" placeholder="amount" value="<%= transaction.amount %>"><br>
+    <input type="date" id="date" name="date" placeholder="date" value="<%= transaction.date %>"><br>
+    <input type="submit" value="Update">
+</form>
