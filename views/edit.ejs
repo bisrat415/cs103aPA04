@@ -1,9 +1,9 @@
-<h1>Edit your entry here!</h1>
+<h1>Edit your entries here!</h1>
 
-<form method="POST" action=>
-    <input type="text" id="description" name="description" placeholder="description"><br>
-    <input type="text" id="category" name="category" placeholder="category"><br>
-    <input type="number" id="amount" name="amount" placeholder="amount"><br>
-    <input type="date" id="date" name="date" placeholder="date"><br>
-    <input type="submit" value="update">
+<form method="POST" action="<%=`/transaction/${transaction._id}/update?_method=PUT`%>">
+    <input type="text" id="description" name="description"  value="<%= transaction.description %>" placeholder="description" required="true"><br>
+    <input type="text" id="category" name="category"  value="<%= transaction.category %>" placeholder="category" required="true"><br>
+    <input type="number" id="amount" name="amount"  value="<%= transaction.amount %>" placeholder="amount" required="true"><br>
+    <input type="date" id="date" name="date" placeholder="date" required="true"><br>
+    <button type="submit">Update</button>
 </form>

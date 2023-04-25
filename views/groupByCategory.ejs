@@ -1,0 +1,19 @@
+<p>Here is your list of things to do!</p>
+<p><a href="/transaction">transaction table</a></p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% things.forEach(transaction => { %>
+            <tr>
+                <td><%= transaction._id %></td>
+                <td><%= transaction.total %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+
+</table>
