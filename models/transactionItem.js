@@ -12,4 +12,4 @@ var transactionSchema = Schema( {
   userId: ObjectId
 } );
 
-module.exports = mongoose.model( 'transactionItem', transactionSchema );
+module.exports = mongoose.model( 'transactionItemGroup1', transactionSchema );
